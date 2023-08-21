@@ -20,3 +20,4 @@
 "hiya", "Conversation"
 "is hpotter 2 in rn", "See librarian"
 "is hpotter 2 in right now", "See librarian"
+"这个图书馆有《哈利·波特》第二本书吗？", "See librarian"
