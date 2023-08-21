@@ -26,8 +26,14 @@ inputs = [
     "How long until the library closes?",
 ]
 
-response = co.classify(
-    inputs=inputs,
-    examples=examples,
-)
-print(response)
+
+def classify_input(input_text):
+    response = co.classify(
+        examples=examples,
+        inputs=[input_text],
+    )
+
+    return response[0].prediction
+
+
+print(classify_input(inputs[0]))
