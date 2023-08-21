@@ -10,22 +10,27 @@ BLUE = "\033[34m"
 
 if __name__ == "__main__":
     while True:
-        input_text = speech_to_text()
+        print(GREEN + "USER: " + RESET, end="")
+        # print(input_text)
+
+        input_text = input()  # speech_to_text()
 
         if "quit" in input_text:
             break
 
         output = get_response(input_text)
 
-        print(GREEN + "USER input_text: " + RESET, end="")
-        print(input_text)
-
         print(BLUE + "RESPONSE: " + RESET, end="")
         if output == "Calling a librarian to help you.":
             print(YELLOW + output + RESET)
 
             answer = input("Enter an answer: ")
-            print(BLUE + "LIBRARIAN: " + RESET + process_librarian_response(answer, input_text) + "\n")
+            print(
+                BLUE
+                + "LIBRARIAN: "
+                + RESET
+                + process_librarian_response(answer, input_text)
+            )
         else:
             print(output)
 
