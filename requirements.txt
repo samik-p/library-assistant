@@ -1,0 +1,4 @@
+SpeechRecognition
+pyaudio
+openai
+python-dotenv
