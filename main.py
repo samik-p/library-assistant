@@ -10,6 +10,7 @@ BLUE = "\033[34m"
 
 if __name__ == "__main__":
     while True:
+        print(RED + "TYPE 'quit' to exit program")
         print(GREEN + "USER: " + RESET, end="")
         # print(input_text)
 
