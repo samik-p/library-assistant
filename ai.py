@@ -33,14 +33,14 @@ def get_response(input_text):
         print("No response from the assistant.")
 
     if "FLAG" in output_text:
-        call_librarian(input_text, output_text)
+        call_librarian(input_text)
 
         return "Calling a librarian to help you."
 
     return output_text
 
 
-def call_librarian(input_text, output_text):
+def call_librarian(input_text):
     backup_prompt = f"A patron just asked: '{input_text}'. Summarize this question and generate a short report for the librarian."
 
     response = openai.ChatCompletion.create(
@@ -48,7 +48,7 @@ def call_librarian(input_text, output_text):
         messages=[
             {"role": "system", "content": "You are a library assistant."},
             {"role": "user", "content": input_text},
-            {"role": "assistant", "content": output_text},
+            # {"role": "assistant", "content": output_text},
             {"role": "user", "content": backup_prompt},
         ],
         max_tokens=50,
