@@ -20,7 +20,13 @@ examples = [
     Example("Where in the library can I find the children's books?", "Answer"),
     Example("Is food allowed at the library?", "Answer"),
     Example("Are masks required to be worn at the library?", "Answer"),
+    Example("Hello", "Conversation"),
+    Example("Goodbye", "Conversation"),
+    Example("How are you doing?", "Conversation"),
+    Example("Who are you?", "Conversation"),
 ]
+
+# sample
 inputs = [
     "Is Magic Tree House #39 available at this library?",
     "How long until the library closes?",
@@ -36,4 +42,4 @@ def classify_input(input_text):
     return response[0].prediction
 
 
-print(classify_input(inputs[0]))
+# print(classify_input(inputs[0]))

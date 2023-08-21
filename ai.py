@@ -2,6 +2,7 @@ import os
 
 import openai
 from dotenv import load_dotenv
+from classify import *
 
 load_dotenv()
 
@@ -18,6 +19,14 @@ Otherwise, answer the question based on context:
 
 
 def get_response(input_text):
+    classification = classify_input(input_text)
+
+    print(f"<cohere> {classification}")
+    if classification == "See librarian":
+        call_librarian(input_text)
+
+        return "Calling a librarian to help you."
+
     response = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
         messages=[
@@ -33,6 +42,8 @@ def get_response(input_text):
         print("No response from the assistant.")
 
     if "FLAG" in output_text:
+        print("<gpt-3.5-turbo> FLAG")
+
         call_librarian(input_text)
 
         return "Calling a librarian to help you."
