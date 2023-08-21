@@ -35,7 +35,7 @@ def get_response(input_text):
     return output_text
 
 def call_librarian(input_text):
-    
+
     # call a librarian and
     # send the input text for context
 
@@ -49,5 +49,24 @@ def call_librarian(input_text):
     )
     message = response.choices[0].text.strip()
 
-    print(f"\n=========\nSENT TO LIBRARIAN: {message}\n=========")
+    print(f"=========\nSENT TO LIBRARIAN: {message}\n=========")
 
+
+def process_librarian_response(answer_text, original_question):
+
+    prompt = f"""Clarify the following input:
+{answer_text}
+
+This was original question for context:
+{original_question}
+"""
+    response = openai.Completion.create(
+        model="text-davinci-003",
+        prompt=prompt,
+        temperature=0.6,
+        max_tokens=100,
+    )
+    message = response.choices[0].text.strip()
+
+    return message
+    
