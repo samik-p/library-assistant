@@ -19,3 +19,4 @@
 "Is Magic Tree House #39 available at this library?", "See librarian"
 "hiya", "Conversation"
 "is hpotter 2 in rn", "See librarian"
+"is hpotter 2 in right now", "See librarian"
