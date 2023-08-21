@@ -3,7 +3,7 @@ import speech_recognition as sr
 
 def get_voice_input(listener, microphone):
     with microphone as source:
-        print("listening...")
+        print("\nlistening...\n")
         # get user input (voice)
         user_input = listener.listen(source)
         # uses Google API
