@@ -3,3 +3,5 @@ pyaudio
 openai
 python-dotenv
 cohere
+Flask
+flask-cors
