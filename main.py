@@ -21,6 +21,9 @@ if __name__ == "__main__":
         print(input)
 
         print(BLUE + "RESPONSE: " + RESET, end="")
-        print(output)
+        if output == "Calling a librarian to help you.":
+            print(YELLOW + output + RESET)
+        else:
+            print(output)
 
     print(GREEN + "You have exited the program! Have a nice day :)" + RESET)
