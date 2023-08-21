@@ -9,6 +9,7 @@ YELLOW = "\033[33m"
 BLUE = "\033[34m"
 
 if __name__ == "__main__":
+    user_messages = []
     while True:
         print(RED + "TYPE 'quit' to exit program")
         print(GREEN + "USER: " + RESET, end="")
@@ -18,6 +19,8 @@ if __name__ == "__main__":
 
         if "quit" in input_text:
             break
+
+        user_messages.append({"role": "user", "content": f"{input_text}"})
 
         output = get_response(input_text)
 
@@ -36,3 +39,7 @@ if __name__ == "__main__":
             print(output)
 
     print(GREEN + "You have exited the program! Have a nice day :)" + RESET)
+
+    print(RED + "RECEIPT:" + RESET)
+    for message in user_messages:
+        print(message)
