@@ -52,7 +52,7 @@ def get_response(input_text):
 
 
 def call_librarian(input_text):
-    backup_prompt = f"A patron just asked: '{input_text}'. Summarize this question and generate a short report for the librarian."
+    backup_prompt = f"A patron just asked: '{input_text}'. Summarize this question for the librarian."
 
     response = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
