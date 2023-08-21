@@ -8,65 +8,76 @@ load_dotenv()
 # authenticate
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
+
 def generate_scenario_prompt(input_text):
-    prompt = f"""You are a library assistant. If the question relies on library-specific data, return 'FLAG'.
+    prompt = f"""If the question relies on library-specific data or is not a valid question, return 'FLAG'.
 Otherwise, answer the question based on context:
-{input_text}
-     
-If the input is not a valid question, return 'I don't understand'."""
+{input_text}"""
+
     return prompt
 
+
 def get_response(input_text):
-    response = openai.Completion.create(
-        model="text-davinci-003",
-        prompt=generate_scenario_prompt(input_text),
-        temperature=0.6,
-        max_tokens=100,
+    response = openai.ChatCompletion.create(
+        model="gpt-3.5-turbo",
+        messages=[
+            {"role": "system", "content": "You are a library assistant."},
+            {"role": "user", "content": generate_scenario_prompt(input_text)},
+        ],
+        max_tokens=50,
     )
 
-    output_text = response.choices[0].text.strip()
+    if "choices" in response and len(response["choices"]) > 0:
+        output_text = response["choices"][0]["message"]["content"]
+    else:
+        print("No response from the assistant.")
 
     if "FLAG" in output_text:
-
-        call_librarian(input_text)
+        call_librarian(input_text, output_text)
 
         return "Calling a librarian to help you."
 
     return output_text
 
-def call_librarian(input_text):
 
-    # call a librarian and
-    # send the input text for context
-
+def call_librarian(input_text, output_text):
     backup_prompt = f"A patron just asked: '{input_text}'. Summarize this question and generate a short report for the librarian."
 
-    response = openai.Completion.create(
-        model="text-davinci-003",
-        prompt=backup_prompt,
-        temperature=0.6,
-        max_tokens=100,
+    response = openai.ChatCompletion.create(
+        model="gpt-3.5-turbo",
+        messages=[
+            {"role": "system", "content": "You are a library assistant."},
+            {"role": "user", "content": input_text},
+            {"role": "assistant", "content": output_text},
+            {"role": "user", "content": backup_prompt},
+        ],
+        max_tokens=50,
     )
-    message = response.choices[0].text.strip()
+    if "choices" in response and len(response["choices"]) > 0:
+        message = response["choices"][0]["message"]["content"]
+    else:
+        print(f"(No response from the assistant) - USER: {input_text}")
 
     print(f"=========\nSENT TO LIBRARIAN: {message}\n=========")
 
 
 def process_librarian_response(answer_text, original_question):
-
     prompt = f"""Clarify the following input:
-{answer_text}
+{answer_text}"""
 
-This was original question for context:
-{original_question}
-"""
-    response = openai.Completion.create(
-        model="text-davinci-003",
-        prompt=prompt,
-        temperature=0.6,
-        max_tokens=100,
+    response = openai.ChatCompletion.create(
+        model="gpt-3.5-turbo",
+        messages=[
+            {"role": "system", "content": "You are a library assistant."},
+            {"role": "user", "content": original_question},
+            {"role": "assistant", "content": answer_text},
+            {"role": "user", "content": prompt},
+        ],
+        max_tokens=50,
     )
-    message = response.choices[0].text.strip()
+    if "choices" in response and len(response["choices"]) > 0:
+        message = response["choices"][0]["message"]["content"]
+    else:
+        message = f"(No response from the assistant) - {answer_text}"
 
     return message
-    
