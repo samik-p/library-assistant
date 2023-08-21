@@ -9,21 +9,31 @@ YELLOW = "\033[33m"
 BLUE = "\033[34m"
 
 if __name__ == "__main__":
+    examples = parse_file_for_examples("examples.txt")
+    print(YELLOW + "Training data:" + RESET)
+    for example in examples:
+        print(f"\t{example}")
+
     user_messages = []
     while True:
         print(RED + "TYPE 'quit' to exit program")
         print(GREEN + "USER: " + RESET, end="")
-        # print(input_text)
 
+        # wait for user input
         input_text = input()  # speech_to_text()
+        # print(input_text)   # uncomment if speech_to_text() is used
 
+        # check for whether user quit or not
         if "quit" in input_text:
             break
 
+        # append to our conversation
         user_messages.append({"role": "user", "content": f"{input_text}"})
 
-        output = get_response(input_text)
+        # process input and get response from our AI
+        output = get_response(input_text, examples)
 
+        # depending on response, print
         print(BLUE + "RESPONSE: " + RESET, end="")
         if output == "Calling a librarian to help you.":
             print(YELLOW + output + RESET)
