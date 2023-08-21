@@ -2,3 +2,4 @@ SpeechRecognition
 pyaudio
 openai
 python-dotenv
+cohere
