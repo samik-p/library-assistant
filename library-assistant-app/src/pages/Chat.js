@@ -61,7 +61,7 @@ function Chat() {
 
   return (
     <div className="chat-page">
-      <Box h="100vh" pt="100px" display="flex" alignItems="center" justifyContent="center" overflowY="scroll">
+      <Box h="100vh" pt="100px" display="flex" alignItems="center" justifyContent="center" overflowY="scroll" marginBottom="20px">
         <Box maxW="90vw" borderWidth="1px" borderRadius="lg" p="4">
           <VStack spacing="4">
             <Box flex="1">
