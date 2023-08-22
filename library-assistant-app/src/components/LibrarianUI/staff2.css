@@ -1,0 +1,23 @@
+.TicketList {
+    text-align: center;
+  }
+  
+.App-header {
+background-color: #007bff;
+color: white;
+padding: 1rem;
+}
+
+.ticket-list {
+list-style: none;
+padding: 0;
+}
+
+.ticket {
+    color: black;
+    background-color: #c42323;
+    border: 1px solid #ccc;
+    padding: 1rem;
+    margin: 1rem;
+}
+  

@@ -1,0 +1,39 @@
+/* App.css */
+.LibrarianUI {
+    text-align: center;
+    padding: 2rem;
+  }
+  
+.ticket {
+border: 1px solid #ccc;
+padding: 1rem;
+margin: 1rem 0;
+}
+
+.queue {
+margin-top: 2rem;
+}
+
+form {
+display: flex;
+flex-direction: column;
+align-items: center;
+border: 1px solid #ccc;
+padding: 1rem;
+margin-bottom: 2rem;
+}
+
+input,
+textarea {
+width: 100%;
+padding: 0.5rem;
+margin: 0.5rem 0;
+}
+
+button {
+padding: 0.5rem 1rem;
+background-color: #007bff;
+color: #fff;
+border: none;
+cursor: pointer;
+}

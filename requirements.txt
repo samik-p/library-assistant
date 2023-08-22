@@ -5,3 +5,7 @@ python-dotenv
 cohere
 Flask
 flask-cors
+langdetect
+huggingface
+transformers
+torch
