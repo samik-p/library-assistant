@@ -1,6 +1,8 @@
 from sr import *
 from ai import *
 
+from langdetect import detect
+
 # text colors (ANSI)
 RESET = "\033[0m"
 RED = "\033[31m"
@@ -26,10 +28,14 @@ if __name__ == "__main__":
         # check for whether user quit or not
         if "quit" in input_text:
             break
+    
+        # detect language of input
+        input_lang = detect(input_text)
+        
 
         # append to our conversation
         user_messages.append({"role": "user", "content": f"{input_text}"})
-
+        
         # process input and get response from our AI
         output = get_response(input_text, examples)
 
