@@ -160,3 +160,28 @@ cython_debug/
 #.idea/
 
 .vscode/
+
+# dependencies
+/library-assistant-app/node_modules
+/library-assistant-app/.pnp
+/library-assistant-app/.pnp.js
+
+# testing
+/library-assistant-app/coverage
+
+# production
+/library-assistant-app/build
+
+# misc
+/library-assistant-app/.DS_Store
+/library-assistant-app/.env.local
+/library-assistant-app/.env.development.local
+/library-assistant-app/.env.test.local
+/library-assistant-app/.env.production.local
+
+/library-assistant-app/npm-debug.log*
+/library-assistant-app/yarn-debug.log*
+/library-assistant-app/yarn-error.log*
+
+# package lock
+/library-assistant-app/package-lock.json
