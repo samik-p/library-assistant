@@ -18,7 +18,7 @@ def hello_world():
 # request: {
 #   user_message: string
 # }
-@app.route("/chat", methods=["POST"])
+@app.route("/api/chat", methods=["POST"])
 # @cross_origin(origins=["http://localhost:3000/"])
 def hello_chat():
     # get request data, and then input text from data

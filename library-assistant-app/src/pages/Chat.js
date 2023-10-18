@@ -30,12 +30,12 @@ function Chat() {
   };
 
   const get_assistant_response = (user_input) => {
-    fetch("http://localhost:8080/chat", {
+    fetch("http://localhost:8000/api/chat/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ "user_message": user_input })
+      body: JSON.stringify({ "user_message": user_input, "pk": 1 })
     }).then((response) => {
       // first then: checks for error
       // console.log("First then")
@@ -61,7 +61,7 @@ function Chat() {
 
   return (
     <div className="chat-page">
-      <Box h="100vh" pt="100px" display="flex" alignItems="center" justifyContent="center" overflowY="scroll" marginBottom="20px">
+      <Box h="100vh" pt="100px" display="flex" alignItems="center" justifyContent="center" overflowY="scroll" marginBottom="40px">
         <Box maxW="90vw" borderWidth="1px" borderRadius="lg" p="4">
           <VStack spacing="4">
             <Box flex="1">

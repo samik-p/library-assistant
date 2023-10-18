@@ -43,3 +43,5 @@
 "Do you have Percy Jackson and the Lightning Thief available?", "See librarian"
 "你有《哈利波特》第二本书吗？", "See librarian"
 "What events are happening today at this library?", "See librarian"
+"what books are available today?", "See librarian"
+"where do i find computer science books?", "See librarian"

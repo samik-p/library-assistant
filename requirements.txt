@@ -9,3 +9,9 @@ langdetect
 huggingface
 transformers
 torch
+
+django
+django-rest-framework
+
+cchardet
+chardet
